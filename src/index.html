@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SecretVisuals Launcher</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="app">
+  <aside class="rail">
+    <div class="brand-icon" title="SecretVisuals"><img src="../assets/secretvisuals-logo.png" alt="SV"></div>
+    <button class="rail-btn active" data-page="home" title="Главная">◆</button><button class="rail-btn" data-page="tariffs" title="Тарифы">▤</button>
+    <button class="rail-btn" data-page="mods" title="Моды">▦</button><button class="rail-btn" data-page="accounts" title="Аккаунты">♙</button>
+    <button class="rail-btn" data-page="settings" title="Настройки">⚙</button>
+    <div class="rail-spacer"></div><button class="rail-btn logout" id="profileBtn" title="Профиль">⇥</button>
+  </aside>
+  <header class="topbar">
+    <div class="launcher-status"><span class="status-dot"></span><span id="accountName">Minecraft не запущен</span></div>
+    <button class="save microsoft-login" id="microsoftLogin">Войти Microsoft</button>
+    <div class="window-controls"><button id="minimize" aria-label="Свернуть">−</button><button id="close" aria-label="Закрыть">×</button></div>
+  </header>
+  <main class="content">
+    <section class="page tariffs-page" id="page-tariffs">
+      <div class="tariffs-heading"><span class="eyebrow">SECRET VISUALS</span><h1>Выбери свой тариф</h1><p>Сначала тариф — затем выбор версии Minecraft и запуск.</p></div>
+      <div class="tariff-grid">
+        <article class="tariff-card">
+          <div class="tariff-top"><span class="tariff-mark">01</span><span class="tariff-status">БАЗОВЫЙ</span></div>
+          <h2>FREE</h2><p class="tariff-version">Minecraft 1.16.5</p><ul><li>Доступ к версии 1.16.5</li><li>Запуск через лаунчер</li></ul>
+          <button class="tariff-action" data-choose-tier="FREE">Продолжить бесплатно <span>→</span></button>
+        </article>
+        <article class="tariff-card">
+          <div class="tariff-top"><span class="tariff-mark">02</span><span class="tariff-status">РАСШИРЕННЫЙ</span></div>
+          <h2>BASIC</h2><p class="tariff-version">Minecraft 1.21.4</p><ul><li>Доступ к версии 1.21.4</li><li>Каталог модов и настройки</li></ul>
+          <button class="tariff-action" data-buy-tier="BASIC">Купить BASIC <span>↗</span></button>
+        </article>
+        <article class="tariff-card">
+          <div class="tariff-top"><span class="tariff-mark">03</span><span class="tariff-status">ПОЛНЫЙ ДОСТУП</span></div>
+          <h2>PREMIUM</h2><p class="tariff-version">Minecraft 1.21.11</p><ul><li>Доступ к версии 1.21.11</li><li>Расширенный тариф</li></ul>
+          <button class="tariff-action" data-buy-tier="PREMIUM">Купить PREMIUM <span>↗</span></button>
+        </article>
+      </div>
+      <div class="tariff-footer"><span>Уже купил тариф?</span><div class="key-row"><input id="licenseKey" type="text" maxlength="100" placeholder="Введи ключ активации" aria-label="Ключ активации"><button id="activateKey" class="save">Активировать ключ</button></div></div>
+    </section>
+    <section class="page active" id="page-home">
+      <button class="version-card hero" data-version="1.16.5" aria-label="Minecraft 1.16.5">
+        <span class="scene"></span><span class="shade"></span><span class="card-copy"><b>Minecraft 1.16.5</b><small>Free</small></span><span class="play">▶</span>
+      </button>
+      <div class="bottom-cards">
+        <button class="version-card half" data-version="1.21.11" aria-label="Minecraft 1.21.11">
+          <span class="scene"></span><span class="shade"></span><span class="card-copy"><b>Minecraft 1.21.11</b><small>Premium</small></span><span class="play">▶</span>
+        </button>
+        <button class="version-card half" data-version="1.21.4" aria-label="Minecraft 1.21.4">
+          <span class="scene"></span><span class="shade"></span><span class="card-copy"><b>Minecraft 1.21.4</b><small>Basic</small></span><span class="play">▶</span>
+        </button>
+      </div>
+    </section>
+    <section class="page settings-page" id="page-settings">
+      <h2>Настройки</h2>
+      <div class="theme-panel">
+        <div class="theme-head"><div><b>Тема оформления</b><small>Цвета интерфейса лаунчера</small></div><span class="theme-preview" id="themePreview">● ● ●</span></div>
+        <div class="theme-options" role="group" aria-label="Выбор темы">
+          <button class="theme-option active" data-theme-choice="mono"><span class="theme-swatch mono"></span><b>Monochrome</b><small>Чёрно-серая</small></button>
+          <button class="theme-option" data-theme-choice="green"><span class="theme-swatch green"></span><b>Neon Green</b><small>Чёрно-зелёная</small></button>
+          <button class="theme-option" data-theme-choice="purple"><span class="theme-swatch purple"></span><b>Neon Purple</b><small>Чёрно-фиолетовая</small></button>
+          <button class="theme-option" data-theme-choice="blue"><span class="theme-swatch blue"></span><b>Neon Blue</b><small>Чёрно-синяя</small></button>
+          <button class="theme-option" data-theme-choice="red"><span class="theme-swatch red"></span><b>Neon Red</b><small>Чёрно-красная</small></button>
+          <button class="theme-option" data-theme-choice="orange"><span class="theme-swatch orange"></span><b>Neon Orange</b><small>Чёрно-оранжевая</small></button>
+        </div>
+      </div>
+      <div class="ram-panel">
+        <div class="ram-head"><div><b>Выделение оперативной памяти</b><small>Для Minecraft</small></div><strong id="ramValue">4 ГБ</strong></div>
+        <input id="ramSlider" class="ram-slider" type="range" min="512" max="15360" step="512" value="4096" aria-label="Оперативная память в мегабайтах">
+        <div class="ram-scale"><span>512 МБ</span><span>15 ГБ</span></div>
+        <button class="save" id="saveRam">Сохранить память</button>
+      </div>
+      <div class="mods-folder-panel"><div><b>Папка с модами</b><small>Открыть папку .minecraft/mods</small></div><button class="save" id="openModsFolder">Открыть папку</button></div>
+      <div class="profile-panel">
+        <div class="panel-heading"><div><b>Профиль сборки</b><small>Быстрый набор для разных задач</small></div><span id="buildProfileStatus">Custom</span></div>
+        <div class="profile-actions"><button class="save build-profile active" data-build-profile="custom">Своя сборка</button><button class="save build-profile" data-build-profile="pvp">PvP</button><button class="save build-profile" data-build-profile="fps">FPS Boost</button></div>
+        <p id="buildProfileDescription">Текущие моды не меняются автоматически.</p>
+      </div>
+      <div class="profile-panel">
+        <div class="panel-heading"><div><b>Обновление модов</b><small>Проверить установленные через каталог Modrinth</small></div><button class="save" id="updateMods">Проверить обновления</button></div>
+        <p id="updateStatus">Автопроверка при запуске выключена.</p>
+        <label class="setting-toggle"><span><b>Автопроверка при запуске</b><small>Проверять обновления при открытии лаунчера</small></span><input type="checkbox" id="autoUpdateMods" checked><i></i></label>
+      </div>
+      <div class="profile-panel logs-panel">
+        <div class="panel-heading"><div><b>Журнал событий</b><small>Ошибки, установки и действия лаунчера</small></div><div><button class="save" id="refreshLogs">Обновить</button><button class="save" id="copyLogs">Копировать</button></div></div>
+        <pre id="launcherLogs">Журнал загружается…</pre>
+      </div>
+    </section>
+    <section class="page accounts-page" id="page-accounts">
+      <div class="mods-heading"><div><h2>Аккаунты Minecraft</h2><p>Добавляй несколько Microsoft-аккаунтов и выбирай, каким войти в игру.</p></div><button class="save" id="addAlt">＋ Добавить альт</button></div>
+      <div class="account-notice">Для каждого аккаунта требуется действующая Minecraft: Java Edition. При выборе аккаунта лаунчер повторно откроет безопасный вход Microsoft.</div>
+      <div id="accountsList" class="accounts-list"><div class="empty-state">Загружаю аккаунты…</div></div>
+    </section>
+    <section class="page mods-page" id="page-mods">
+      <div class="mods-heading"><div><h2>Каталог модов</h2><p>Ищи моды и устанавливай их в папку Minecraft.</p></div><button class="save" id="modsFolderShortcut">Папка модов ↗</button></div>
+      <div class="mods-tools"><select id="modGameVersion" aria-label="Версия Minecraft"><option value="1.21.4" selected>1.21.4</option><option value="1.21.11">1.21.11</option><option value="1.16.5">1.16.5</option></select><div class="source-switch"><button class="source-btn active" data-source="modrinth">Modrinth</button><button class="source-btn" data-source="curseforge">CurseForge</button></div><input id="modSearch" placeholder="Начни вводить название мода — поиск запустится сам" maxlength="100" autocomplete="off"></div>
+      <div class="mods-note" id="modsNote">Modrinth: поиск и установка совместимых модов.</div>
+      <div class="mods-results" id="modsResults"><div class="empty-state">Начни вводить название мода — результаты появятся автоматически.</div></div>
+    </section>
+  </main>
+  <div class="notice" id="notice" role="status"></div>
+</div><script src="renderer.js"></script></body></html>
