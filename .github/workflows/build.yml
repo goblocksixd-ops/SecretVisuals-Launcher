@@ -8,14 +8,15 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
+    name: Build Windows EXE
     runs-on: windows-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -26,13 +27,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Windows EXE
-        run: npm run dist
+      - name: Build Windows installer
+        run: npm run dist -- --publish never
 
-      - name: Upload installer
+      - name: Upload Windows installer
         uses: actions/upload-artifact@v4
         with:
           name: SecretVisuals-Windows
-          path: dist/*.exe
+          path: |
+            dist/*.exe
           if-no-files-found: error
-
+          retention-days: 7
